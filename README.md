@@ -1,10 +1,12 @@
 # traffic-forward
 
->traffic-forward 是一款python开发的流量转发工具，可以使用python脚本行运行，也可以封装使用命令行，同样可以使用pyinstaller等工具进行封装成Macos，Linux, Windows 下的可执行文件运行，可用于本地流量转发，与内网（远程）流量转发
+[中文README]()
 
-### 1. 安装（可选）
+>Traffic forward is a traffic forwarding tool developed by python. It can be run with python script lines or encapsulated with command lines. It can also be run as an executable file under Macos, Linux and Windows using tools such as pyinstaller. It can be used for local traffic forwarding and intranet (remote) traffic forwarding
 
-​	此工具完全使用python原生的模块进行开发不需要安全任何的第三方模块，如果需要使用命令行可能需要sudo
+### 1. Download (Optional)
+
+​	This tool completely uses python native modules for development. It does not require any third-party modules to be secure. If you need to use the command line, you may need sudo
 
 ```
 pip(3) install traffic_forward
@@ -12,13 +14,12 @@ pip(3) install traffic_forward
 
 ![image-20221215192747158](https://raw.githubusercontent.com/doudoudedi/blog-img/master/uPic/image-20221215192747158.png)
 
-### 2. 使用
+### 2. Use
 
-​	lport与lhost是需要转发的端口
+​	lport and lhost are the ports to be forwarded
+​	rhost and rport are the target ports for forwarding
 
-​	rhost与rport是转发到的目标端口
-
-#### 2.1 转发本地流量
+#### 2.1 Forwarding local traffic
 
 ```
 traffic_forward -mode trans -lhost 127.0.0.1 -lport 22 -rhost 127.0.0.1 -rport 9999
@@ -26,40 +27,36 @@ traffic_forward -mode trans -lhost 127.0.0.1 -lport 22 -rhost 127.0.0.1 -rport 9
 
 ![image-20221215193437861](https://raw.githubusercontent.com/doudoudedi/blog-img/master/uPic/image-20221215193437861.png)
 
-​	在使用完后使用control+c退出会有错误输出这是正常的	
+​	It is normal to use control+c to exit after using, and there will be error output
 
-#### 2.2 将流量转发到公网机器
+#### 2.2 Forwarding traffic to public network machines
 
-​	在公网上的主机监听2个端口
+​	The host on the public network listens to two ports
 
 ```
 traffic_forward -mode listen -lport 8088 -rport 8089
 ```
 
-​	内网主机连接公网主机监听的任意端口（2个中任意一个），加入debug可以查看连接出现的问题，此时是讲本地的22端口转发到公网机器的8088口
+​	The intranet host connects to any port (any of the two) that the public network host listens on. Join the debug to check the connection problems. At this point, the local port 22 is forwarded to the 8088 port of the public network machine
 
 ```
 traffic_forward -mode slave -lhost 127.0.0.1 -lport 22 -rhost x.x.x.x -rport 8088 -debug 1
 ```
 
-​	然后
+​	then
 
 ```
 ssh name@x.x.x.x -p 8089
 ```
 
+#### 2.3 Forwarding local UDP traffic
 
-
-#### 2.3 转发本地的UDP流量
-
-​	由于UDP原因，这里只开发到了UDP的本地转发，如果可以希望可以帮组我开发远程转发
+​	Because of UDP, only local forwarding of UDP is developed here. If you want to help me develop remote forwarding
 
 ```
 traffic_forward -mode Utrans -lhost 127.0.0.1 -lport 8090 -rhost 127.0.0.1 -rport 9999
 ```
 
+#### 2.4 log
 
-
-#### 2.4. 日志
-
-​	此工具会在当前目录下生成日志，详细日志的功能等待开发可以如果不需要请直接删去
+​	This tool will generate logs in the current directory. The detailed log function can be deleted if not needed
