@@ -25,8 +25,6 @@ pip(3) install traffic_forward
 traffic_forward -mode trans -lhost 127.0.0.1 -lport 22 -rhost 127.0.0.1 -rport 9999
 ```
 
-![image-20221215193437861](https://raw.githubusercontent.com/doudoudedi/blog-img/master/uPic/image-20221215193437861.png)
-
 ​	It is normal to use control+c to exit after using, and there will be error output
 
 #### 2.2 Forwarding traffic to public network machines
