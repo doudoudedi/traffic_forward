@@ -24,7 +24,6 @@ pip(3) install traffic_forward
 traffic_forward -mode trans -lhost 127.0.0.1 -lport 22 -rhost 127.0.0.1 -rport 9999
 ```
 
-![image-20221215193437861](https://raw.githubusercontent.com/doudoudedi/blog-img/master/uPic/image-20221215193437861.png)
 
 ​	在使用完后使用control+c退出会有错误输出这是正常的	
 
