@@ -1,6 +1,6 @@
 # traffic-forward
 
-[中文README]()
+[中文README](https://github.com/doudoudedi/traffic_forward/blob/main/README_cn.md)
 
 >Traffic forward is a traffic forwarding tool developed by python. It can be run with python script lines or encapsulated with command lines. It can also be run as an executable file under Macos, Linux and Windows using tools such as pyinstaller. It can be used for local traffic forwarding and intranet (remote) traffic forwarding
 
